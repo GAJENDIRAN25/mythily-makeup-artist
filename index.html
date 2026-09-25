@@ -95,7 +95,18 @@ body.dark{--cream:#151210;--cream2:#1d1815;--brown:#f2e7dc;--brown2:#d7c6b8;--go
 <div class="portfolio-category"><div class="portfolio-category-head"><h3>Baby Shower Makeup</h3><span>Celebration Glam</span></div><div class="real-gallery">
 <div class="real-gallery-item"><img src="images/baby1.jpeg" alt="Baby shower makeup by Mythily" loading="lazy"><div class="real-gallery-label">Baby Shower Look</div></div><div class="real-gallery-item"><img src="images/baby2.jpeg" alt="Baby shower makeup by Mythily" loading="lazy"><div class="real-gallery-label">Baby Shower Look</div></div><div class="real-gallery-item"><img src="images/baby3.jpeg" alt="Baby shower makeup by Mythily" loading="lazy"><div class="real-gallery-label">Baby Shower Look</div></div>
 </div></div>
-<div class="gallery-note">More real client looks can be added here as your portfolio grows.</div>
+<div class="before-after" style="display:grid;grid-template-columns:.8fr 1.2fr;gap:45px;align-items:center;margin-top:80px">
+<div><div class="eyebrow">Before & After • Sample</div><h3 style="font-family:'Cormorant Garamond',serif;font-size:48px;line-height:.95;margin:10px 0 18px">See the transformation.</h3><p style="color:var(--muted)">A sample interactive before-and-after section for the website. This is an illustrative stock-photo demo, not a real client transformation. You can replace it later with your own before-and-after photos.</p></div>
+<div id="baSlider" style="position:relative;height:480px;border-radius:14px;overflow:hidden;border:1px solid rgba(184,138,74,.35);box-shadow:var(--shadow);background:#211b18">
+<img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=90" alt="Sample after makeup look" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+<div id="baBefore" style="position:absolute;inset:0 auto 0 0;width:50%;overflow:hidden;border-right:2px solid white;z-index:2">
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=90" alt="Sample before makeup look" style="width:100%;height:100%;object-fit:cover;max-width:none">
+</div>
+<span style="position:absolute;left:16px;top:16px;padding:7px 12px;border-radius:999px;background:rgba(20,15,12,.68);color:white;font-size:10px;letter-spacing:1px;z-index:3">BEFORE • SAMPLE</span>
+<span style="position:absolute;right:16px;top:16px;padding:7px 12px;border-radius:999px;background:rgba(20,15,12,.68);color:white;font-size:10px;letter-spacing:1px;z-index:3">AFTER • SAMPLE</span>
+<span id="baHandle" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:white;color:#3b2922;display:grid;place-items:center;font-weight:800;z-index:4;box-shadow:0 6px 20px rgba(0,0,0,.25);pointer-events:none">↔</span>
+<input id="baRange" type="range" min="0" max="100" value="50" aria-label="Before and after comparison" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:5">
+</div></div><div class="gallery-note">More real client looks can be added here as your portfolio grows.</div>
 </div>
 </section>
 
@@ -157,6 +168,8 @@ body.dark{--cream:#151210;--cream2:#1d1815;--brown:#f2e7dc;--brown2:#d7c6b8;--go
 <script>
 const menuBtn=document.getElementById('menuBtn'),mobileMenu=document.getElementById('mobileMenu');
 const themeBtn=document.getElementById('themeBtn');
+const baRange=document.getElementById('baRange'),baBefore=document.getElementById('baBefore'),baHandle=document.getElementById('baHandle');
+if(baRange){baRange.addEventListener('input',e=>{baBefore.style.width=e.target.value+'%';baHandle.style.left=e.target.value+'%';});}
 if(localStorage.getItem('mythily-theme')==='dark'){document.body.classList.add('dark');themeBtn.textContent='☀';}
 themeBtn.addEventListener('click',()=>{document.body.classList.toggle('dark');const dark=document.body.classList.contains('dark');localStorage.setItem('mythily-theme',dark?'dark':'light');themeBtn.textContent=dark?'☀':'☾';});
 menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
